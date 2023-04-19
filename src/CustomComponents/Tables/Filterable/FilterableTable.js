@@ -1,23 +1,16 @@
 import { useEffect, useState } from "react";
 import FilterTableStyle from "../Filterable/FilterableTable.module.css";
 
-const FilterableTable = ({
-  data,
-  columns,
-  filterableCols,
-  tableHeader,
+const FilterableTable = ({ data, columns, filterableCols, tableHeader,
   recordsPerPageOption,
-  defaultRecordPerPage,
-}) => {
+  defaultRecordPerPage, }) => {
   const [recordsPerPage, setRecordsPerPage] = useState(defaultRecordPerPage);
   const [tabData, setTabData] = useState(data);
   const [sortedColumn, setSortedColumn] = useState("");
   const [sortedAsc, setSortedAsc] = useState(0);
   const [popupVisibility, setPopupVisibility] = useState(false);
   const [valuesToBeFiltered, setValuesToBeFiltered] = useState();
-  const [filterableColumn, setFilterableColumn] = useState(
-    columns.filter((col) => col.filterable)
-  );
+  const [filterableColumn, setFilterableColumn] = useState(columns.filter(col => col.filterable));
   const [pages, setPages] = useState(Math.ceil(data.length / recordsPerPage));
   const [pageNo, setPageNo] = useState(1);
   const [pageStartIndex, setPageStartIndex] = useState(0);
@@ -27,50 +20,56 @@ const FilterableTable = ({
   );
   // const [filterStrings, setFilterString] = useState();
 
+
+
+
   useEffect(() => {
     let filteredTempObj = {};
     filterableCols.forEach((elemt) => {
       if (elemt.filterable) {
         filteredTempObj[elemt.column] = "";
       }
-    });
+    })
 
-    setValuesToBeFiltered(filteredTempObj);
-  }, []);
+    setValuesToBeFiltered(filteredTempObj)
+  }, [])
+
 
   const changeFilterableInputs = (e) => {
+
     const { name, value } = e.target;
 
-    let tempFilteredStringObject = { ...valuesToBeFiltered, [name]: value };
+    let tempFilteredStringObject = { ...valuesToBeFiltered, [name]: value }
 
-    console.log(tempFilteredStringObject);
+    console.log(tempFilteredStringObject)
     // filterLogic to be implemented here
 
     let filteredData = data.filter((itemRow) => {
+
       let dataPresentInRow = true;
       columns.forEach((cols, index) => {
-        let columnName = cols.column;
 
-        let columnData = itemRow[columnName].toString();
+        let columnName = cols.column;
+        let columnData = itemRow && itemRow[columnName] ? itemRow[columnName].toString().toLowerCase() : "";
 
         if (
           cols.filterable &&
           tempFilteredStringObject[columnName] !== "" &&
-          !columnData.includes(tempFilteredStringObject[columnName])
+          !columnData.includes(tempFilteredStringObject[columnName].toLowerCase())
         ) {
-          console.log(tempFilteredStringObject[columnName], columnData);
           dataPresentInRow = false;
         }
-      });
+      })
 
       return dataPresentInRow;
+
     });
 
     setTabData([...filteredData]);
-    setValuesToBeFiltered(tempFilteredStringObject);
+    setValuesToBeFiltered(tempFilteredStringObject)
 
-    paginator(null, null, null, null, filteredData);
-  };
+    paginator(null, null, null, null, filteredData)
+  }
 
   const changePage = (next) => {
     let page = next
@@ -78,54 +77,39 @@ const FilterableTable = ({
         ? pages
         : pageNo + 1
       : pageNo - 1 < 1
-      ? 1
-      : pageNo - 1;
+        ? 1
+        : pageNo - 1;
 
-    paginator(null, null, recordsPerPage, page, null);
+    paginator(null, null, recordsPerPage, page, null)
   };
+
 
   const recordSelectionPerPageChange = (noOfRecords) => {
-    paginator(null, null, noOfRecords, null, null);
-    setRecordsPerPage(noOfRecords);
+    paginator(null, null, noOfRecords, null, null)
+    setRecordsPerPage(noOfRecords)
   };
 
-  const paginator = (
-    recordStartIndex,
-    recordEndIndex,
-    noOfRecords,
-    currrPageNo,
-    sortedArrayData
-  ) => {
+  const paginator = (recordStartIndex, recordEndIndex, noOfRecords, currrPageNo, sortedArrayData) => {
+
     currrPageNo = currrPageNo ? currrPageNo : 1;
     noOfRecords = noOfRecords ? noOfRecords : defaultRecordPerPage;
     sortedArrayData = sortedArrayData ? sortedArrayData : tabData;
 
-    recordStartIndex = recordStartIndex
-      ? recordStartIndex
-      : Math.max((currrPageNo - 1) * noOfRecords, 0);
-    recordEndIndex = recordEndIndex
-      ? recordEndIndex
-      : Math.min(currrPageNo * noOfRecords - 1, sortedArrayData.length - 1);
+    recordStartIndex = recordStartIndex ? recordStartIndex : Math.max((currrPageNo - 1) * noOfRecords, 0);
+    recordEndIndex = recordEndIndex ? recordEndIndex : Math.min(currrPageNo * noOfRecords - 1, sortedArrayData.length - 1);
 
-    console.log(
-      recordStartIndex,
-      recordEndIndex,
-      noOfRecords,
-      currrPageNo,
-      sortedArrayData
-    );
+    console.log(recordStartIndex, recordEndIndex, noOfRecords, currrPageNo, sortedArrayData)
 
-    let tempDataArray = sortedArrayData.slice(
-      recordStartIndex,
-      recordEndIndex + 1
-    );
+    let tempDataArray = sortedArrayData.slice(recordStartIndex, recordEndIndex + 1);
 
     setPages(Math.ceil(sortedArrayData.length / noOfRecords));
     setPageStartIndex(recordStartIndex);
-    setPageEndIndex(recordEndIndex);
+    setPageEndIndex(recordEndIndex)
     setPageNo(currrPageNo);
     setDatainPage([...tempDataArray]);
-  };
+
+  }
+
 
   return (
     <div>

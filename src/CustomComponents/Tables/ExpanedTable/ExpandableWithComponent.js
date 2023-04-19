@@ -84,8 +84,8 @@ const ExpandableWithComponent = ({
         ? pages
         : pageNo + 1
       : pageNo - 1 < 1
-      ? 1
-      : pageNo - 1;
+        ? 1
+        : pageNo - 1;
 
     paginator(null, null, recordsPerPage, page, null);
   };
@@ -184,8 +184,6 @@ const ExpandableWithComponent = ({
               }
             </button>
               : col.column
-
-
             } */}
                 {col.column}
               </th>

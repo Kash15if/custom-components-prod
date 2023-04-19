@@ -6,7 +6,7 @@ import { getInputBoxFromType } from "../../../services/editTable";
 import CrudieStyle from "../CRUDIE/Crudie.module.css";
 import "../CRUDIE/Style.css";
 //Icon
-import { FaEdit } from "react-icons/fa";
+import { FaPen } from "react-icons/fa";
 import { FaPrescriptionBottleAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -82,8 +82,8 @@ const CRUDIE = ({
     try {
       await axios.patch(
         (editApi ? editApi : process.env.REACT_APP_TEST_API) +
-          "/" +
-          selectedOneRowForEdit[uniqueId],
+        "/" +
+        selectedOneRowForEdit[uniqueId],
         selectedOneRowForEdit
       );
     } catch (e) {
@@ -105,8 +105,8 @@ const CRUDIE = ({
     try {
       await axios.delete(
         (deleteOneApi ? deleteOneApi : process.env.REACT_APP_TEST_API) +
-          "/" +
-          selectedRow[uniqueId]
+        "/" +
+        selectedRow[uniqueId]
       );
     } catch (e) {
       console.log(e);
@@ -288,8 +288,8 @@ const CRUDIE = ({
         ? pages
         : pageNo + 1
       : pageNo - 1 < 1
-      ? 1
-      : pageNo - 1;
+        ? 1
+        : pageNo - 1;
 
     setPageNo(page);
     paginator(null, null, recordsPerPage, page, null);
@@ -308,11 +308,11 @@ const CRUDIE = ({
     }
     let sortedData = asc
       ? tabData.sort((row1, row2) =>
-          row1[col] > row2[col] ? 1 : row1[col] < row2[col] ? -1 : 0
-        )
+        row1[col] > row2[col] ? 1 : row1[col] < row2[col] ? -1 : 0
+      )
       : tabData.sort((row1, row2) =>
-          row1[col] > row2[col] ? -1 : row1[col] < row2[col] ? 1 : 0
-        );
+        row1[col] > row2[col] ? -1 : row1[col] < row2[col] ? 1 : 0
+      );
 
     setTabData([...sortedData]);
     paginator(pageStartIndex, pageEndIndex, recordsPerPage, pageNo, sortedData);
@@ -436,7 +436,7 @@ const CRUDIE = ({
   };
 
   return (
-    <div className={CrudieStyle.MainBody}>
+    <div className={CrudieStyle.MfgdrfainBody}>
       <div className={CrudieStyle.frame}>
         <div className={CrudieStyle.Toolbar}>
           <div className={CrudieStyle.ToolbarLeft}>
@@ -526,11 +526,11 @@ const CRUDIE = ({
               </div>
               <div className={CrudieStyle.PopupFooter}>
                 {createNewRecordFormOpen ? (
-                  <button onClick={() => onAddNewRecord()}>Create New</button>
+                  <button className={CrudieStyle.button33} onClick={() => onAddNewRecord()}>Create New</button>
                 ) : (
-                  <button onClick={() => onUpdateConfirm()}>Update</button>
+                  <button className={CrudieStyle.button33} onClick={() => onUpdateConfirm()}>Update</button>
                 )}
-                <button onClick={() => onUpdateCancel()}>Cancel</button>
+                <button className={CrudieStyle.button34} onClick={() => onUpdateCancel()}>Cancel</button>
               </div>
             </div>
           </div>
@@ -541,14 +541,16 @@ const CRUDIE = ({
               <div className={CrudieStyle.modalcontent}>
                 Popup Delete , Are you sure want to delete id :{" "}
                 {selectedOneRowForDelete[uniqueId]}
-                <button
-                  onClick={() => onDeleteConfirm(selectedOneRowForDelete)}
-                >
-                  Delete
-                </button>
-                <button onClick={() => onDeleteCancel(selectedOneRowForDelete)}>
-                  Cancel
-                </button>
+                <div className={CrudieStyle.DeleteBtnAlign}>
+                  <button
+                    className={CrudieStyle.PopupDelBtn} onClick={() => onDeleteConfirm(selectedOneRowForDelete)}
+                  >
+                    Delete
+                  </button>
+                  <button className={CrudieStyle.PopupCancelBtn} onClick={() => onDeleteCancel(selectedOneRowForDelete)}>
+                    Cancel
+                  </button>
+                </div>
               </div>
             </div>
           )}
@@ -669,17 +671,17 @@ const CRUDIE = ({
                   ))}
                   <td>
                     <button
-                      className={CrudieStyle.Editbtn}
+                      className={CrudieStyle.EditBtn}
                       onClick={() => editRow(row)}
                     >
                       {" "}
-                      <FaEdit />
+                      <FaPen />
                     </button>
                   </td>
 
                   <td>
                     <button
-                      className={CrudieStyle.delbtn}
+                      className={CrudieStyle.DelBtn}
                       onClick={() => deleteRow(row)}
                     >
                       <FaPrescriptionBottleAlt />

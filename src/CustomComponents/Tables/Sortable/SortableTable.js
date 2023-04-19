@@ -26,8 +26,8 @@ const Sortable = ({
         ? pages
         : pageNo + 1
       : pageNo - 1 < 1
-      ? 1
-      : pageNo - 1;
+        ? 1
+        : pageNo - 1;
 
     paginator(null, null, recordsPerPage, page, null);
   };
@@ -45,11 +45,11 @@ const Sortable = ({
     }
     let sortedData = asc
       ? data.sort((row1, row2) =>
-          row1[col] > row2[col] ? 1 : row1[col] < row2[col] ? -1 : 0
-        )
+        row1[col] > row2[col] ? 1 : row1[col] < row2[col] ? -1 : 0
+      )
       : data.sort((row1, row2) =>
-          row1[col] > row2[col] ? -1 : row1[col] < row2[col] ? 1 : 0
-        );
+        row1[col] > row2[col] ? -1 : row1[col] < row2[col] ? 1 : 0
+      );
 
     setTabData([...sortedData]);
 

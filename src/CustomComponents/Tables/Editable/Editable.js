@@ -3,6 +3,8 @@ import { getInputBoxFromType } from "../../../services/editTable";
 import EditabrlStyle from "../Editable/Editable.module.css";
 import { FaEdit } from "react-icons/fa";
 import { FaPrescriptionBottleAlt } from "react-icons/fa";
+import { FaPen } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
 
 import axios from "axios";
 const Editable = ({
@@ -47,8 +49,8 @@ const Editable = ({
     try {
       await axios.patch(
         (editApi ? editApi : process.env.REACT_APP_TEST_API) +
-          "/" +
-          selectedOneRowForEdit[uniqueId],
+        "/" +
+        selectedOneRowForEdit[uniqueId],
         selectedOneRowForEdit
       );
     } catch (e) {
@@ -74,8 +76,8 @@ const Editable = ({
     try {
       await axios.delete(
         (deleteOneApi ? deleteOneApi : process.env.REACT_APP_TEST_API) +
-          "/" +
-          selectedRow[uniqueId]
+        "/" +
+        selectedRow[uniqueId]
       );
     } catch (e) {
       console.log(e);
@@ -142,8 +144,8 @@ const Editable = ({
         ? pages
         : pageNo + 1
       : pageNo - 1 < 1
-      ? 1
-      : pageNo - 1;
+        ? 1
+        : pageNo - 1;
 
     let start = Math.max((page - 1) * recordsPerPage, 0);
     let end = Math.min(page * recordsPerPage - 1, tabData.length - 1);
@@ -170,11 +172,11 @@ const Editable = ({
     }
     let sortedData = asc
       ? data.sort((row1, row2) =>
-          row1[col] > row2[col] ? 1 : row1[col] < row2[col] ? -1 : 0
-        )
+        row1[col] > row2[col] ? 1 : row1[col] < row2[col] ? -1 : 0
+      )
       : data.sort((row1, row2) =>
-          row1[col] > row2[col] ? -1 : row1[col] < row2[col] ? 1 : 0
-        );
+        row1[col] > row2[col] ? -1 : row1[col] < row2[col] ? 1 : 0
+      );
     setTabData([...sortedData]);
     let tempDataArray = [];
     for (let index = pageStartIndex; index <= pageEndIndex; index++) {
@@ -246,6 +248,7 @@ const Editable = ({
                   <h3 className={EditabrlStyle.PopupHeader}>Popup Form</h3>
                   <div className={EditabrlStyle.Tdata}>
                     {columns.map((col, index) =>
+
                       getInputBoxFromType(
                         col,
                         selectedOneRowForEdit,
@@ -280,14 +283,17 @@ const Editable = ({
               <div className={EditabrlStyle.modalcontent}>
                 Popup Delete , Are you sure want to delete id :{" "}
                 {selectedOneRowForDelete[uniqueId]}
-                <button
-                  onClick={() => onDeleteConfirm(selectedOneRowForDelete)}
-                >
-                  Delete
-                </button>
-                <button onClick={() => onDeleteCancel(selectedOneRowForDelete)}>
-                  Cancel
-                </button>
+                <div className={EditabrlStyle.DeleteBtnAlign}>
+                  <button
+                    className={EditabrlStyle.PopupDelBtn}
+                    onClick={() => onDeleteConfirm(selectedOneRowForDelete)}
+                  >
+                    Delete
+                  </button>
+                  <button className={EditabrlStyle.PopupCancelBtn} onClick={() => onDeleteCancel(selectedOneRowForDelete)}>
+                    Cancel
+                  </button>
+                </div>
               </div>
             </div>
           )}
@@ -340,7 +346,7 @@ const Editable = ({
                       onClick={() => editRow(row)}
                     >
                       {" "}
-                      <FaEdit />
+                      <div className={EditabrlStyle.EditBtn}>< FaPen /></div>
                     </button>
                   </td>
                   <td>
@@ -348,7 +354,7 @@ const Editable = ({
                       className={EditabrlStyle.delbtn}
                       onClick={() => deleteRow(row)}
                     >
-                      <FaPrescriptionBottleAlt />
+                      <div className={EditabrlStyle.DelBtn}><FaPrescriptionBottleAlt /></div>
                     </button>
                   </td>
                 </tr>
