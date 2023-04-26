@@ -1,0 +1,55 @@
+.container {
+  /* background-color: red; */
+  margin: 1% 2%;
+  width: 96%;
+  height: 330px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.MainBody {
+  position: relative;
+}
+.PreNextBtn {
+  /* background-color: rgb(119, 0, 255); */
+  display: flex;
+  justify-content: space-between;
+  width: 92%;
+  /* height: 100%; */
+  position: absolute;
+  top: 34%;
+  left: 4%;
+  opacity: 0.8;
+  z-index: 2;
+}
+.Prebtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: initial;
+  width: 2.5rem;
+  height: 6rem;
+  background-color: white;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.11);
+  transition: opacity 0.5s ease-in;
+  border-radius: 0px 14px 14px 0px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.Nextbtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: initial;
+  width: 2.5rem;
+  height: 6rem;
+  background-color: white;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.11);
+  transition: opacity 0.5s ease-in;
+  border-radius: 14px 0px 0px 14px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1, 1);
+}

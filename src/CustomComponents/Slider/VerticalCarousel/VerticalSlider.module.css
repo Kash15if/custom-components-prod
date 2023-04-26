@@ -1,0 +1,41 @@
+.dot {
+  height: 10px;
+  width: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px;
+}
+
+.active {
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  border-radius: 50%;
+  background: white;
+}
+
+.container {
+  position: relative;
+  margin: 1% 2%;
+}
+
+.images {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.8rem;
+}
+
+.pageDots {
+  position: absolute;
+  top: 35%;
+  left: 0;
+  color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}

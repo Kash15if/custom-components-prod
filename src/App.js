@@ -6,11 +6,17 @@ import dummyData from "./data/data1";
 import expandableTableDataForComp from "./data/expandableWithComponent";
 import expandableTableData from "./data/expandableData";
 import { useEffect, useState } from "react";
+import navData from "./data/NavbarData";
 
-import Home from "./Pages/Homepage"
+
 import Tables from "./Pages/Tables";
+import Home from "./Pages/Homepage";
+
+import Footer from "./Components/Footer/Footer";
 
 import { Route, Routes } from "react-router-dom";
+
+import Navbar from "./Components/Navbar/Navbar";
 
 function App() {
 
@@ -22,6 +28,14 @@ function App() {
     ({
       column: colName, sortable: true, editable: true, filterable: true,
       formInputDetails: { defaultVal: "abcd", inputType: "text", radioLabel: "Please select your favorite Web language:", data: [{ label: "xyz", value: "abc" }, { label: "uvw", value: "def" }], min: 0, max: 5 }
+      // if inut type is dropdown then [{ label: "xyz", value: "abc" }] 
+      // if it it text then {placeholder: "xyz" , name: "name"}
+      // if checkbox {label: "label" }
+      // if date {min: "" , max: "" }
+      // if int {min: "" , max: "" }
+      // if textarea  {placeholder: "xyz" , name: "name" , lines: 2}
+
+
     }));
 
     tempCols.innerColumns = [
@@ -53,6 +67,9 @@ function App() {
   return (
     <div>
 
+
+      <Navbar data={navData} />
+
       <Routes>
 
 
@@ -67,9 +84,10 @@ function App() {
           expandableTableDataForComp={expandableTableDataForComp}
         />} />
 
-        {/* <Route path="/popups" element={<Popups />} /> */}
+
       </Routes>
 
+      <Footer />
     </div>
 
   );
