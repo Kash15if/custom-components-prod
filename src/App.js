@@ -57,7 +57,6 @@ function App() {
 
     },]
     setColumns(tempCols);
-    console.log(tempCols)
   }, []);
 
 

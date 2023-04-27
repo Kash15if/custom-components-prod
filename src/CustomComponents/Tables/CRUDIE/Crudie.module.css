@@ -507,3 +507,11 @@ td {
   border-radius: 10px !important;
   border: 10px solid red !important;
 }
+
+.selectedRow {
+  background-color: #edf4ff !important;
+  border-left: 4px solid #2633e4;
+}
+.rowNotSelected {
+  background-color: #ffffff !important;
+}

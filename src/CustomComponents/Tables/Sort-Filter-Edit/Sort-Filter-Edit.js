@@ -104,7 +104,6 @@ const SortFilterEdit = ({
     recordStartIndex = recordStartIndex ? recordStartIndex : Math.max((currrPageNo - 1) * noOfRecords, 0);
     recordEndIndex = recordEndIndex ? recordEndIndex : Math.min(currrPageNo * noOfRecords - 1, sortedArrayData.length - 1);
 
-    console.log(recordStartIndex, recordEndIndex, noOfRecords, currrPageNo, sortedArrayData)
 
     let tempDataArray = sortedArrayData.slice(recordStartIndex, recordEndIndex + 1);
 
@@ -143,7 +142,6 @@ const SortFilterEdit = ({
   // @dependant
   const onDeleteConfirm = async (selectedRow) => {
 
-    console.log(selectedRow, uniqueId, selectedRow[uniqueId])
     try {
       await axios.delete((deleteOneApi ? deleteOneApi : process.env.REACT_APP_TEST_API) + "/" + selectedRow[uniqueId])
     } catch (e) {

@@ -4,7 +4,6 @@ import axios from "axios";
 import { getInputBoxFromType } from "../../../services/editTable";
 // Import Style
 import CrudieStyle from "../CRUDIE/Crudie.module.css";
-import "../CRUDIE/Style.css";
 //Icon
 import { FaPen } from "react-icons/fa";
 import { FaPrescriptionBottleAlt } from "react-icons/fa";
@@ -648,8 +647,8 @@ const CRUDIE = ({
                                 <tr
                                     className={
                                         multiSelectForDeleteList[tempUniqueId]
-                                            ? "selectedRow"
-                                            : "rowNotSelected"
+                                            ? CrudieStyle.selectedRow
+                                            : CrudieStyle.rowNotSelected
                                     }
                                 >
                                     <td>

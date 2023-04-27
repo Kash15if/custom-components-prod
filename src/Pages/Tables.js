@@ -71,21 +71,6 @@ const Tables = ({ upDateData, data, expandableTableData, colmns }) => {
             const tempDataFromDB = response.data;
             setDummyData(tempDataFromDB);
 
-            console.log(tempDataFromDB);
-
-            // let tempCols = Object.keys(tempDataFromDB[0]).map((colName) =>
-            // ({
-            //     column: colName, sortable: true, editable: true, filterable: true,
-            //     formInputDetails: { defaultVal: "abcd", inputType: "text", radioLabel: "Please select your favorite Web language:", data: [{ label: "xyz", value: "abc" }, { label: "uvw", value: "def" }], min: 0, max: 5 }
-            //     // if inut type is dropdown then [{ label: "xyz", value: "abc" }]
-            //     // if it it text then {placeholder: "xyz" , name: "name"}
-            //     // if checkbox {label: "label" }
-            //     // if date {min: "" , max: "" }
-            //     // if int {min: "" , max: "" }
-            //     // if textarea  {placeholder: "xyz" , name: "name" , lines: 2}
-
-            // }));
-
             let tempCols = [
                 {
                     column: "_id",
