@@ -708,14 +708,14 @@ const Tables = ({ upDateData, data, expandableTableData, colmns }) => {
 
 
 
-            {/* --------------------------------------------------------------- Expandable table----------------------------------------- */}
-            <hr class={TableStyle.horizontalDivider}></hr>
-            <div id="recursiveExpandable">
+            --------------------------------------------------------------- Expandable table-----------------------------------------
+            {/* <hr class={TableStyle.horizontalDivider}></hr> */}
+            {/* <div id="recursiveExpandable"> */}
 
-                <h1 className={TableStyle.tableTitle}>Expandable Table</h1>
+            {/* <h1 className={TableStyle.tableTitle}>Expandable Table</h1> */}
 
-                {/* Expandable table */}
-                {dummyData && columns && (
+            {/* Expandable table */}
+            {/* {dummyData && columns && (
                     <Expandable
                         data={expandableTableData}
                         columns={columns}
@@ -724,10 +724,10 @@ const Tables = ({ upDateData, data, expandableTableData, colmns }) => {
                         defaultRecordPerPage={5}
                         uniqueId="_id"
                     />
-                )}
+                )} */}
 
 
-                <div className={TableStyle.propsButton}>
+            {/* <div className={TableStyle.propsButton}>
                     <button
                         className={TableStyle.Btn2}
                         onClick={() => setExpandableTableRealProp(true)}
@@ -768,10 +768,10 @@ const Tables = ({ upDateData, data, expandableTableData, colmns }) => {
                         </SyntaxHighlighter>
 
                     </div>
-                </Popup>
+                </Popup> */}
 
 
-                <h4>
+            {/* <h4>
                     Link to code:-{" "}
                     <a
                         className={TableStyle.LinkBtn}
@@ -782,7 +782,7 @@ const Tables = ({ upDateData, data, expandableTableData, colmns }) => {
                         Expanable Table
                     </a>
                 </h4>
-            </div>
+            </div> */}
 
             {/* ------------------------------------------------------------- Expandable table ------------------------------------------- */}
 
