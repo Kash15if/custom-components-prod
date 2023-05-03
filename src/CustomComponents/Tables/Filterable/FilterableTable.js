@@ -41,6 +41,7 @@ const FilterableTable = ({ data, columns, filterableCols, tableHeader,
 
     let tempFilteredStringObject = { ...valuesToBeFiltered, [name]: value }
 
+    console.log(tempFilteredStringObject)
     // filterLogic to be implemented here
 
     let filteredData = data.filter((itemRow) => {
@@ -97,6 +98,7 @@ const FilterableTable = ({ data, columns, filterableCols, tableHeader,
     recordStartIndex = recordStartIndex ? recordStartIndex : Math.max((currrPageNo - 1) * noOfRecords, 0);
     recordEndIndex = recordEndIndex ? recordEndIndex : Math.min(currrPageNo * noOfRecords - 1, sortedArrayData.length - 1);
 
+    console.log(recordStartIndex, recordEndIndex, noOfRecords, currrPageNo, sortedArrayData)
 
     let tempDataArray = sortedArrayData.slice(recordStartIndex, recordEndIndex + 1);
 

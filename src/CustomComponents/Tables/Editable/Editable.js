@@ -203,6 +203,7 @@ const Editable = ({
   const editRow = (selectedOneRow) => {
     // EditOneRowPopUp
     // call edit popup form here
+    // console.log(selectedOneRow)
     setSelectedOneRowForEdit(selectedOneRow);
   };
 

@@ -49,6 +49,7 @@ const ExpandableWithComponent = ({
 
         let tempFilteredStringObject = { ...valuesToBeFiltered, [name]: value };
 
+        console.log(tempFilteredStringObject);
         // filterLogic to be implemented here
 
         let filteredData = data.filter((itemRow) => {
@@ -63,6 +64,7 @@ const ExpandableWithComponent = ({
                     tempFilteredStringObject[columnName] !== "" &&
                     !columnData.includes(tempFilteredStringObject[columnName])
                 ) {
+                    console.log(tempFilteredStringObject[columnName], columnData);
                     dataPresentInRow = false;
                 }
             });
@@ -111,6 +113,13 @@ const ExpandableWithComponent = ({
             ? recordEndIndex
             : Math.min(currrPageNo * noOfRecords - 1, sortedArrayData.length - 1);
 
+        console.log(
+            recordStartIndex,
+            recordEndIndex,
+            noOfRecords,
+            currrPageNo,
+            sortedArrayData
+        );
 
         let tempDataArray = sortedArrayData.slice(
             recordStartIndex,
@@ -125,7 +134,7 @@ const ExpandableWithComponent = ({
     };
 
     const showExpandedTableAtIndex = (index) => {
-
+        console.log(index);
         if (expandedTableAtIndex[index]) {
             let tempObj = expandedTableAtIndex;
             delete tempObj[index];
@@ -134,6 +143,7 @@ const ExpandableWithComponent = ({
             setExpandedTableAtIndex({ ...expandedTableAtIndex, [index]: true });
         }
 
+        console.log({ ...expandedTableAtIndex, [index]: true });
     };
 
     return (
